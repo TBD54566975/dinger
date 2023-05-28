@@ -1,3 +1,3 @@
 # Dinger
 
-## _Ping a DID_
+_Ping a DID_
