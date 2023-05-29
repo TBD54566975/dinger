@@ -5,32 +5,25 @@
   <title>Dinger</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron&display=swap" rel="stylesheet">
-  <link
-  rel="apple-touch-icon"
-  href="https://www.tbd.website/images/tbd-fav-icon-main.png"
-/>
-
-<link
-  rel="icon"
-  type="image/png"
-  href="https://www.tbd.website/images/tbd-fav-icon-main.png"
-/>  
+  <link rel="apple-touch-icon" href="https://www.tbd.website/images/tbd-fav-icon-main.png"/>  
+  <link rel="icon" type="image/png" href="https://www.tbd.website/images/tbd-fav-icon-main.png" />    
 </head>
 
-<body style="background-color: #FFDD00; font-family: 'Press Start 2P', monospace;">
+<body style="background-color: #FFDD00; font-family: 'Press Start 2P', monospace; padding: 10px;">
   <h1><span style="border-bottom: 5px solid black;">Dinger</span> <span id="subtitle" style="font-size: 20px; font-style: italic; font-family: 'Orbitron', sans-serif;"> - Ping a DID</span></h1>
-  <button id="copy-did" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace;">Copy your DID</button>
+  <button id="copy-did" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace; width: 100%;">Copy your DID</button>
 
   <h2>Ding Someone</h2>
 
   <form id="ding-form">
     <p id="ding-error" style="color: red; margin-bottom: 5px;"></p>
-    <input type="text" id="did" placeholder="Enter DID" style="margin-bottom: 10px; width: 300px; padding: 5px; font-family: 'Press Start 2P', monospace;" />
+    <input type="text" id="did" placeholder="Enter DID" style="margin-bottom: 10px; width: 100%; box-sizing: border-box; padding: 5px; font-family: 'Press Start 2P', monospace;" />
     <br>
-    <input type="text" id="note" placeholder="Enter note (optional)" style="margin-bottom: 10px; width: 300px; padding: 5px; font-family: 'Press Start 2P', monospace;" />
+    <input type="text" id="note" placeholder="Enter note (optional)" style="margin-bottom: 10px; width: 100%; box-sizing: border-box; padding: 5px; font-family: 'Press Start 2P', monospace;" />
     <br>
-    <button type="submit" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace;">Ding</button>
+    <button type="submit" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace; width: 100%;">Ding</button>
     <span id="ding-progress" style="color: green; margin-left: 5px;"></span>
   </form>
 
