@@ -25,19 +25,12 @@ input[type="text"] {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
-  /* Add some space between each item */
-}
-
-.dinged-item {
-  display: flex;
-  font-style: italic;
 }
 
 .ding-sections {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Add some gap between the sections */
 }
 
 .dinged-section,
