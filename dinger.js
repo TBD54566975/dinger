@@ -63,13 +63,13 @@ shareDidElement.addEventListener('click', async () => {
         title: 'Ding Me',
         text: myDid,
       })
-    } catch(err) {
+    } catch (err) {
       console.error('There was an error sharing:', err);
     }
   } else {
     // fallback for browsers that do not support navigator.share
     alert('Web Share API not supported.');
-  }    
+  }
 });
 
 
