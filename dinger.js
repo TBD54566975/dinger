@@ -166,7 +166,8 @@ async function renderDings() {
     message: {
       filter: {
         protocol: dingerProtocolDefinition.protocol
-      }
+      },
+      dateSort: 'createdDescending'
     }
   });
 
