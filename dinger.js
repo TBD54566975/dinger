@@ -33,6 +33,7 @@ const dingerProtocolDefinition = {
 };
 
 const copyDidElement = document.querySelector('#copy-did');
+const shareDidElement = document.querySelector('#share-did');
 const dingForm = document.querySelector('#ding-form');
 const dingErrorElement = document.querySelector('#ding-error');
 const dingProgressElement = document.querySelector('#ding-progress');
@@ -54,6 +55,23 @@ copyDidElement.addEventListener('click', async () => {
     alert('Failed to copy DID: ', err);
   }
 });
+
+shareDidElement.addEventListener('click', async () => {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: 'Ding Me',
+        text: myDid,
+      })
+    } catch(err) {
+      console.error('There was an error sharing:', err);
+    }
+  } else {
+    // fallback for browsers that do not support navigator.share
+    alert('Web Share API not supported.');
+  }    
+});
+
 
 dingForm.addEventListener('submit', async (event) => {
   event.preventDefault();
