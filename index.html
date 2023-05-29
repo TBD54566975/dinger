@@ -3,41 +3,54 @@
 
 <head>
   <title>Dinger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron&display=swap" rel="stylesheet">
-  <link rel="apple-touch-icon" href="https://www.tbd.website/images/tbd-fav-icon-main.png"/>  
-  <link rel="icon" type="image/png" href="https://www.tbd.website/images/tbd-fav-icon-main.png" />    
+  <link rel="apple-touch-icon" href="https://www.tbd.website/images/tbd-fav-icon-main.png" />
+  <link rel="icon" type="image/png" href="https://www.tbd.website/images/tbd-fav-icon-main.png" />
+  <link rel="stylesheet" href="/style.css">
 </head>
 
-<body style="background-color: #FFDD00; font-family: 'Press Start 2P', monospace; padding: 10px;">
-  <h1><span style="border-bottom: 5px solid black;">Dinger</span> <span id="subtitle" style="font-size: 20px; font-style: italic; font-family: 'Orbitron', sans-serif;"> - Ping a DID</span></h1>
-  <button id="copy-did" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace; width: 100%;">Copy your DID</button>
-  <button id="share-did" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace; width: 100%;">Share your DID</button>
+<body>
+  <h1 id="header">
+    <span id="title">Dinger</span>
+    <span id="subtitle"> - Ping a DID</span>
+  </h1>
+
+  <div id="did-buttons">
+    <button id="copy-did">Copy your DID</button>
+    <button id="share-did">Share your DID</button>
+  </div>
 
   <h2>Ding Someone</h2>
 
   <form id="ding-form">
-    <p id="ding-error" style="color: red; margin-bottom: 5px;"></p>
-    <input type="text" id="did" placeholder="Enter DID" style="margin-bottom: 10px; width: 100%; box-sizing: border-box; padding: 5px; font-family: 'Press Start 2P', monospace;" />
+    <p id="ding-error"></p>
+    <input type="text" id="did" placeholder="Enter DID" />
     <br>
-    <input type="text" id="note" placeholder="Enter note (optional)" style="margin-bottom: 10px; width: 100%; box-sizing: border-box; padding: 5px; font-family: 'Press Start 2P', monospace;" />
+    <input type="text" id="note" placeholder="Enter note (optional)" />
     <br>
-    <button type="submit" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace; width: 100%;">Ding</button>
-    <span id="ding-progress" style="color: green; margin-left: 5px;"></span>
+    <button type="submit">Ding</button>
+    <span id="ding-progress"></span>
   </form>
 
-  <h2>You Dinged:</h2>
-  <ul id="dinged-list">
-    <!-- List items will be added here dynamically -->
-  </ul>
+  <div class="ding-sections">
+    <div class="dinged-section">
+      <h2>You Dinged:</h2>
+      <ul id="dinged-list">
+        <!-- List items will be added here dynamically -->
+      </ul>
+    </div>
 
-  <h2>You were Dinged by:</h2>
-  <ul id="dinged-by-list">
-    <!-- List items will be added here dynamically -->
-  </ul>
+    <div class="dinged-by-section">
+      <h2>Dinged by:</h2>
+      <ul id="dinged-by-list">
+        <!-- List items will be added here dynamically -->
+      </ul>
+    </div>
+  </div>
 
   <script type="module" src="/dinger.js"></script>
 </body>
