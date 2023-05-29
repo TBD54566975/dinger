@@ -5,66 +5,33 @@
   <title>Dinger</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=Montserrat:wght@300&display=swap"
-    rel="stylesheet">
-  <style>
-    body {
-      font-family: 'IBM Plex Mono', monospace;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron&display=swap" rel="stylesheet">
+  <link
+  rel="apple-touch-icon"
+  href="https://www.tbd.website/images/tbd-fav-icon-main.png"
+/>
 
-    button {
-      font-family: 'IBM Plex Mono', monospace;
-      padding: 5px 10px;
-    }
-
-    input[type="text"] {
-      margin-bottom: 10px;
-      width: 300px;
-      padding: 5px;
-      font-family: 'IBM Plex Mono', monospace;
-    }
-
-    #subtitle {
-      margin-top: 0;
-      font-size: 20px;
-      font-style: italic;
-    }
-
-    #copy-did {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    #ding-error {
-      color: red;
-      margin-bottom: 5px;
-    }
-
-    #ding-progress {
-      color: green;
-      margin-left: 5px;
-    }
-
-    .ding-back {
-      margin-left: 5px;
-    }
-  </style>
+<link
+  rel="icon"
+  type="image/png"
+  href="https://www.tbd.website/images/tbd-fav-icon-main.png"
+/>  
 </head>
 
-<body>
-  <h1><span style="border-bottom: 5px solid black;">Dinger</span> <span id=subtitle> - Ping a DID</span></h1>
-  <button id="copy-did">Copy your DID</button>
+<body style="background-color: #FFDD00; font-family: 'Press Start 2P', monospace;">
+  <h1><span style="border-bottom: 5px solid black;">Dinger</span> <span id="subtitle" style="font-size: 20px; font-style: italic; font-family: 'Orbitron', sans-serif;"> - Ping a DID</span></h1>
+  <button id="copy-did" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace;">Copy your DID</button>
 
   <h2>Ding Someone</h2>
 
   <form id="ding-form">
-    <p id="ding-error"></p>
-    <input type="text" id="did" placeholder="Enter DID" />
+    <p id="ding-error" style="color: red; margin-bottom: 5px;"></p>
+    <input type="text" id="did" placeholder="Enter DID" style="margin-bottom: 10px; width: 300px; padding: 5px; font-family: 'Press Start 2P', monospace;" />
     <br>
-    <input type="text" id="note" placeholder="Enter note (optional)" />
+    <input type="text" id="note" placeholder="Enter note (optional)" style="margin-bottom: 10px; width: 300px; padding: 5px; font-family: 'Press Start 2P', monospace;" />
     <br>
-    <button type="submit">Ding</button>
-    <span id="ding-progress"></span>
+    <button type="submit" style="padding: 5px 10px; font-family: 'Press Start 2P', monospace;">Ding</button>
+    <span id="ding-progress" style="color: green; margin-left: 5px;"></span>
   </form>
 
   <h2>You Dinged:</h2>
