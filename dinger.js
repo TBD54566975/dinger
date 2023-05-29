@@ -55,6 +55,28 @@ copyDidElement.addEventListener('click', async () => {
   }
 });
 
+if ('share' in navigator) {
+  const shareDidElement = document.createElement('button');
+  shareDidElement.id = 'share-did';
+  shareDidElement.textContent = 'Share your DID';
+
+  shareDidElement.addEventListener('click', async () => {
+    try {
+      await navigator.share({
+        title: 'Ding Me',
+        text: myDid,
+      })
+    } catch (err) {
+      console.error('There was an error sharing:', err);
+    }
+  });
+
+
+  const didButtonsElement = document.querySelector('#did-buttons');
+  didButtonsElement.appendChild(shareDidElement);
+}
+
+
 dingForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -148,13 +170,16 @@ async function renderDings() {
     message: {
       filter: {
         protocol: dingerProtocolDefinition.protocol
-      }
+      },
+      dateSort: 'createdDescending'
     }
   });
 
   if (status.code !== 200) {
     alert('Failed to query for dings. check console');
     console.error('Failed to query dings', status);
+
+    return;
   }
 
   for (let record of records) {
@@ -164,13 +189,31 @@ async function renderDings() {
     }
 
     const { dinger, note } = await record.data.json();
-    if (dinger === myDid) {
-      const shortenedDid = record.recipient.substr(0, 22);
-      const formattedDing = `[${new Date(record.dateCreated).toLocaleString()}] ${shortenedDid}... - ${note || ''}`;
 
+    // You Dinged:
+    if (dinger === myDid) {
       const dingElement = document.createElement('li');
+      dingElement.className = 'dinged-item'
       dingElement.id = record.id;
-      dingElement.textContent = formattedDing;
+
+      const didElement = document.createElement('span');
+      didElement.className = 'did';
+      didElement.textContent = `${record.recipient.substr(0, 22)}...`;
+
+      dingElement.appendChild(didElement);
+
+      const timestampElement = document.createElement('span');
+      timestampElement.className = 'timestamp';
+      timestampElement.textContent = `${new Date(record.dateCreated).toLocaleString()}`;
+
+      dingElement.appendChild(timestampElement);
+
+      if (note) {
+        const noteElement = document.createElement('span');
+        noteElement.className = 'note';
+        noteElement.textContent = `- ${note}`;
+        dingElement.appendChild(noteElement);
+      }
 
       const dingBackButton = document.createElement('button');
       dingBackButton.className = 'ding-back';
@@ -185,12 +228,29 @@ async function renderDings() {
       dingElement.appendChild(dingBackButton);
       dingedList.appendChild(dingElement);
     } else {
-      const shortenedDid = dinger.substr(0, 22);
-      const formattedDing = `[${new Date(record.dateCreated).toLocaleString()}] ${shortenedDid}... - ${note || ''}`;
-
+      // Dinged By:
       const dingElement = document.createElement('li');
       dingElement.id = record.id;
-      dingElement.textContent = formattedDing;
+      dingElement.className = 'dinged-item'
+
+      const didElement = document.createElement('span');
+      didElement.className = 'did';
+      didElement.textContent = `${dinger.substr(0, 22)}...`;
+
+      dingElement.appendChild(didElement);
+
+      const timestampElement = document.createElement('span');
+      timestampElement.className = 'timestamp';
+      timestampElement.textContent = `${new Date(record.dateCreated).toLocaleString()}`;
+
+      dingElement.appendChild(timestampElement);
+
+      if (note) {
+        const noteElement = document.createElement('span');
+        noteElement.className = 'note';
+        noteElement.textContent = `- ${note}`;
+        dingElement.appendChild(noteElement);
+      }
 
       const dingBackButton = document.createElement('button');
       dingBackButton.className = 'ding-back';
