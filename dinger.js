@@ -68,14 +68,12 @@ if ('share' in navigator) {
 
   shareDidElement.addEventListener('click', async () => {    
     const { origin } = window.location;
-
-    // url encoded DID
-    urlDid = encodeURIComponent(myDid);
-    
+        
     try {
       await navigator.share({
         title: 'Ding Me',
-        text: "Reach me at: " + origin + "?did=" + urlDid,        
+        text: "Reach me at: " + origin + "?did=" + myDid,  
+        url: origin + "?did=" + myDid,      
       })
     } catch (err) {
       console.error('There was an error sharing:', err);
