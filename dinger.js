@@ -39,6 +39,12 @@ const dingProgressElement = document.querySelector('#ding-progress');
 const dingedList = document.querySelector('#dinged-list');
 const dingedByList = document.querySelector('#dinged-by-list');
 
+const urlParams = new URLSearchParams(window.location.search);
+const did = urlParams.get('did');
+if (did) {
+  document.querySelector('#did').value = did;
+}
+
 const { web5, did: myDid } = await Web5.connect();
 
 await configureProtocol();
@@ -60,11 +66,14 @@ if ('share' in navigator) {
   shareDidElement.id = 'share-did';
   shareDidElement.textContent = 'Share your DID';
 
-  shareDidElement.addEventListener('click', async () => {
+  shareDidElement.addEventListener('click', async () => {    
+    const { origin } = window.location;
+    
     try {
       await navigator.share({
         title: 'Ding Me',
-        text: myDid,
+        text: "Reach me at: " + origin + "?did=" + myDid,
+        url: origin + "?did=" + myDid
       })
     } catch (err) {
       console.error('There was an error sharing:', err);
