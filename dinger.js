@@ -80,21 +80,23 @@ if ('share' in navigator) {
     }
   });
 
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {        
-        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-            registration.update();
-            console.log('Service Worker is registered', registration);
-        }).catch((error) => {
-            console.error('Service Worker registration failed:', error);
-        });
-    });
-}  
-
 
   const didButtonsElement = document.querySelector('#did-buttons');
   didButtonsElement.appendChild(shareDidElement);
 }
+
+// add service worker to enable offline support for PWA (this really makes it a PWA)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {        
+      navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+          registration.update();
+          console.log('Service Worker is registered', registration);
+      }).catch((error) => {
+          console.error('Service Worker registration failed:', error);
+      });
+  });
+}  
+
 
 
 dingForm.addEventListener('submit', async (event) => {
