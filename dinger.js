@@ -1,17 +1,6 @@
 import { Web5 } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/web5@0.7.5/dist/browser.mjs';
 
-// add service worker to enable offline support for PWA (this really makes it a PWA)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => { 
-        console.log('loaded') 
-        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-            registration.update();
-            console.log('Service Worker is registered', registration);
-        }).catch((error) => {
-            console.error('Service Worker registration failed:', error);
-        });
-    });
-}
+
 
 const dingerProtocolDefinition = {
   'protocol': 'https://dinger.app/protocol',
