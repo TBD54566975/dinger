@@ -1,4 +1,4 @@
-import { Web5 } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/web5@0.7.5/dist/browser.mjs';
+import { Web5 } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/web5@0.7.10/dist/browser.mjs';
 
 
 
