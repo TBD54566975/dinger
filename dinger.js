@@ -129,9 +129,10 @@ dingForm.addEventListener('submit', async (event) => {
     dingProgressElement.textContent = `Ding written locally! Dinging ${shortenedDid}...`;
 
     const { status: sendStatus } = await record.send(did);
-    console.log('send status', sendStatus);
+
 
     if (sendStatus.code !== 202) {
+      console.log("Unable to send to target did:" + sendStatus);
       dingErrorElement.textContent = `${sendStatus.code} - ${sendStatus.detail}`;
       return;
     }
@@ -162,7 +163,7 @@ async function configureProtocol() {
   // protocol already exists
   if (protocols.length > 0) {
     console.log('protocol already exists');
-    return;
+    //return;
   }
 
   // create protocol
