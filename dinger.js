@@ -1,9 +1,10 @@
-import { Web5 } from 'https://cdn.jsdelivr.net/npm/@tbd54566975/web5@0.7.10/dist/browser.mjs';
+import { Web5 } from 'https://cdn.jsdelivr.net/npm/@web5/api@0.8.1/dist/browser.mjs';
 
 
 
 const dingerProtocolDefinition = {
   'protocol': 'https://dinger.app/protocol',
+  'published': true,
   'types': {
     'ding': {
       'schema': 'ding',
@@ -163,17 +164,19 @@ async function configureProtocol() {
   // protocol already exists
   if (protocols.length > 0) {
     console.log('protocol already exists');
-    //return;
   }
 
-  // create protocol
-  const { status: configureStatus } = await web5.dwn.protocols.configure({
+  // configure protocol on local DWN
+  const { status: configureStatus, protocol } = await web5.dwn.protocols.configure({
     message: {
       definition: dingerProtocolDefinition
     }
   });
+  console.log('configure protocol local status', configureStatus);
 
-  console.log('configure protocol status', configureStatus);
+  // configure protocol on remote DWN, because sync may not have occured yet
+  const { status: remoteConfigureStatus } = protocol.send(myDid);
+  console.log('configure protocol remote status', remoteConfigureStatus);
 }
 
 async function renderDings() {
