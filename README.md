@@ -1,15 +1,15 @@
-# Dinger - progressive web app to show DID to DID communication
+# Dinger
 
-_Ping a DID_
+### _Ping a DID (aka Ding)_
 
 # How to use
 
-Browse to https://dinger.web5.website on your favourite device of choice. 
+Browse to https://dinger.web5.website on your favourite device of choice and ding to your heart's content. 
 
-You can use it in a browser, or on a mobile you can add it to your home screen. Once you add it to your home screen it is "installed" and you get a nice icon, and you can share your DID with others so they can ding you.
+Can also be installed on desktop or mobile devices (as a [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)).
 
 # How it works
 
-Check out manifest.json and read about PWAs: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps 
+> 💡 TODO: Fill out
 
-dinger.js has all the code - index.html the front end. That's it.
+Check out [dinger.js](./dinger.js)
